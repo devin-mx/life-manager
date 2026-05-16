@@ -7,6 +7,10 @@ from PySide6.QtWidgets import (
     QPushButton,
     QLabel,
 )
+from ui.views.tasks import TasksView
+from ui.views.goals import GoalsView
+from ui.views.journal import JournalView
+from ui.views.finances import FinancesView
 
 
 class MainWindow(QMainWindow):
@@ -19,21 +23,25 @@ class MainWindow(QMainWindow):
         self.create_nav_buttons()
 
         self.create_view_stack()
-        self.create_tasks_view()
-        self.create_goals_view()
-        self.create_journal_view()
-        self.create_finances_view()
+        self.tasks_view = TasksView()
+        self.tasks_index = self.stack_widget.addWidget(self.tasks_view)
+        self.goals_view = GoalsView()
+        self.goals_index = self.stack_widget.addWidget(self.goals_view)
+        self.journal_view = JournalView()
+        self.journal_index = self.stack_widget.addWidget(self.journal_view)
+        self.finances_view = FinancesView()
+        self.finances_index = self.stack_widget.addWidget(self.finances_view)
 
-        self.buttons_dict["tasks"].clicked.connect(
+        self.buttons_dict["Tasks"].clicked.connect(
             lambda: self.stack_widget.setCurrentIndex(self.tasks_index)
         )
-        self.buttons_dict["goals"].clicked.connect(
+        self.buttons_dict["Goals"].clicked.connect(
             lambda: self.stack_widget.setCurrentIndex(self.goals_index)
         )
-        self.buttons_dict["journal"].clicked.connect(
+        self.buttons_dict["Journal"].clicked.connect(
             lambda: self.stack_widget.setCurrentIndex(self.journal_index)
         )
-        self.buttons_dict["finances"].clicked.connect(
+        self.buttons_dict["Finances"].clicked.connect(
             lambda: self.stack_widget.setCurrentIndex(self.finances_index)
         )
 
@@ -54,7 +62,7 @@ class MainWindow(QMainWindow):
 
         self.buttons_dict: dict[str, QPushButton] = {}
 
-        button_labels = ["tasks", "goals", "journal", "finances"]
+        button_labels = ["Tasks", "Goals", "Journal", "Finances"]
         for label_name in button_labels:
             button = QPushButton(label_name)
             self.sidebar_layout.addWidget(button)
@@ -63,43 +71,3 @@ class MainWindow(QMainWindow):
     def create_view_stack(self):
         self.stack_widget = QStackedWidget()
         self.central_layout.addWidget(self.stack_widget)
-
-    def create_tasks_view(self):
-        widget = QWidget()
-        self.tasks_layout = QVBoxLayout()
-        widget.setLayout(self.tasks_layout)
-
-        tasks_label = QLabel("Welcome to the Tasks Page!")
-        self.tasks_layout.addWidget(tasks_label)
-
-        self.tasks_index = self.stack_widget.addWidget(widget)
-
-    def create_goals_view(self):
-        widget = QWidget()
-        self.goals_layout = QVBoxLayout()
-        widget.setLayout(self.goals_layout)
-
-        goals_label = QLabel("Welcome to the Goals Page!")
-        self.goals_layout.addWidget(goals_label)
-
-        self.goals_index = self.stack_widget.addWidget(widget)
-
-    def create_journal_view(self):
-        widget = QWidget()
-        self.journal_layout = QVBoxLayout()
-        widget.setLayout(self.journal_layout)
-
-        journal_label = QLabel("Welcome to the Journal Page!")
-        self.journal_layout.addWidget(journal_label)
-
-        self.journal_index = self.stack_widget.addWidget(widget)
-
-    def create_finances_view(self):
-        widget = QWidget()
-        self.finances_layout = QVBoxLayout()
-        widget.setLayout(self.finances_layout)
-
-        finances_label = QLabel("Welcome to the Finances Page!")
-        self.finances_layout.addWidget(finances_label)
-
-        self.finances_index = self.stack_widget.addWidget(widget)

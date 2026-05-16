@@ -1,11 +1,11 @@
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel
 
 
-class JournalView(QWidget):
+class FinancesView(QWidget):
     def __init__(self):
         super().__init__()
         self.main_layout = QVBoxLayout()
         self.setLayout(self.main_layout)
 
-        label = QLabel("Welcome on the Journal Page!")
+        label = QLabel("Welcome on the Finances Page!")
         self.main_layout.addWidget(label)
