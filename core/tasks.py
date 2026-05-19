@@ -21,3 +21,27 @@ def get_all_tasks():
         return tasks
     finally:
         session.close()
+
+
+def toggle_task_done(task_id):
+    session = SessionLocal()
+    try:
+        task = session.get(Task, task_id)
+        if task is None:
+            return
+        task.done = not (task.done)
+        session.commit()
+    finally:
+        session.close()
+
+
+def delete_task(task_id):
+    session = SessionLocal()
+    try:
+        task = session.get(Task, task_id)
+        if task is None:
+            return
+        session.delete(task)
+        session.commit()
+    finally:
+        session.close()
