@@ -5,7 +5,6 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QVBoxLayout,
     QPushButton,
-    QLabel,
 )
 from ui.views.tasks import TasksView
 from ui.views.goals import GoalsView
