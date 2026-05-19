@@ -4,7 +4,7 @@ from db.models import Task
 from datetime import datetime
 
 
-def add_task(title: str, due_date: datetime, description: str = ""):
+def add_task(title: str, due_date: datetime, description: str = "") -> None:
     task = Task(title=title, description=description, due_date=due_date)
     session = SessionLocal()
     try:
@@ -14,16 +14,16 @@ def add_task(title: str, due_date: datetime, description: str = ""):
         session.close()
 
 
-def get_all_tasks():
+def get_all_tasks() -> list[Task]:
     session = SessionLocal()
     try:
-        tasks = session.execute(select(Task)).scalars().all()
+        tasks: list[Task] = list(session.execute(select(Task)).scalars().all())
         return tasks
     finally:
         session.close()
 
 
-def toggle_task_done(task_id):
+def toggle_task_done(task_id) -> None:
     session = SessionLocal()
     try:
         task = session.get(Task, task_id)
@@ -35,7 +35,7 @@ def toggle_task_done(task_id):
         session.close()
 
 
-def delete_task(task_id):
+def delete_task(task_id) -> None:
     session = SessionLocal()
     try:
         task = session.get(Task, task_id)
