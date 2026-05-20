@@ -23,6 +23,13 @@ class TasksView(QWidget):
             ["Done", "Title", "Description", "Due Date", "🗑️"]
         )
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+
+        self.table.setColumnWidth(0, 50)
+        self.table.setColumnWidth(1, 240)
+        self.table.setColumnWidth(2, 550)
+        self.table.setColumnWidth(3, 100)
+        self.table.setColumnWidth(4, 140)
+
         self.main_layout.addWidget(self.table)
 
         self.create_add_task_button()

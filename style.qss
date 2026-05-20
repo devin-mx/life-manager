@@ -1,0 +1,124 @@
+QWidget {
+    font-family: Consolas, monospace;
+    font-size: 13px;
+    background-color: #0D0D00;
+    colorL #FFB000
+}
+
+QPushButton {
+    border: 2px solid #FFB000;
+    padding: 4px 12px;
+    color: #FFB000;
+    background-color: #0D0D00;
+}
+
+QPushButton:hover {
+    background-color: #1A1000;
+    border-color: #FFC84A;
+    /* No box-shadow in QSS, but color shift sells the "glow" */
+}
+
+QPushButton:pressed {
+    background-color: #FFB000;
+    color: #0D0D00;  /* inverted — classic terminal "selected" look */
+}
+
+QMainWindow {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #0D0D00,
+        stop:0.5 #111100,
+        stop:1 #0D0D00
+    );
+}
+
+/* === SIDEBAR === */
+QWidget#sidebar {
+    background-color: #050500;
+    border-right: 2px solid #3A2800;
+}
+
+/* === TABLE === */
+QTableView {
+    background-color: #0D0D00;
+    color: #FFB000;
+    border: 2px solid #3A2800;
+    gridline-color: #3A2800;
+    selection-background-color: #FFB000;
+    selection-color: #0D0D00;
+}
+
+QTableView::item:hover {
+    background-color: #1A1000;
+}
+
+/* === HEADER === */
+QHeaderView::section {
+    background-color: #050500;
+    color: #FFB000;
+    border: 1px solid #3A2800;
+    padding: 4px 8px;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+}
+
+/* === SCROLLBARS === */
+QScrollBar:vertical {
+    background-color: #0D0D00;
+    width: 12px;
+    border: 1px solid #3A2800;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #7A5500;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #FFB000;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QCheckBox {
+    border: 2px solid #FFB000;
+    padding: 4px 12px;
+    color: #FFB000;
+    background-color: #0D0D00;
+}
+
+QCheckBox:hover {
+    background-color: #1A1000;
+    border-color: #FFC84A;
+    /* No box-shadow in QSS, but color shift sells the "glow" */
+}
+
+QCheckBox:pressed {
+    background-color: #FFB000;
+    color: #0D0D00;  /* inverted — classic terminal "selected" look */
+}
+
+/* === DIALOG === */
+QDialog {
+    background-color: #0D0D00;
+    border: 2px solid #7A5500;
+}
+
+/* === INPUTS === */
+QLineEdit, QTextEdit, QDateTimeEdit {
+    background-color: #050500;
+    color: #FFB000;
+    border: 2px solid #3A2800;
+    padding: 4px 8px;
+    font-family: "Courier New", monospace;
+    selection-background-color: #FFB000;
+    selection-color: #0D0D00;
+}
+
+QLineEdit:focus, QTextEdit:focus, QDateTimeEdit:focus {
+    border-color: #FFB000;
+}
+

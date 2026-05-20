@@ -53,6 +53,7 @@ class MainWindow(QMainWindow):
     def create_sidebar(self) -> None:
 
         self.sidebar_widget = QWidget()
+        self.sidebar_widget.setObjectName("sidebar")
         self.sidebar_layout = QVBoxLayout()
         self.sidebar_widget.setLayout(self.sidebar_layout)
         self.central_layout.addWidget(self.sidebar_widget)
@@ -63,7 +64,7 @@ class MainWindow(QMainWindow):
 
         button_labels = ["Tasks", "Goals", "Journal", "Finances"]
         for label_name in button_labels:
-            button = QPushButton(label_name)
+            button = QPushButton(f">{label_name}")
             self.sidebar_layout.addWidget(button)
             self.buttons_dict[label_name] = button
 
