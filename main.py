@@ -8,5 +8,9 @@ Base.metadata.create_all(engine)
 
 app = QApplication(sys.argv)
 window = MainWindow()
+
+with open("style.qss", "r") as f:
+    app.setStyleSheet(f.read())
+
 window.show()
 app.exec()
