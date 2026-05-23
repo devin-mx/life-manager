@@ -10,6 +10,8 @@ QPushButton {
     padding: 4px 12px;
     color: #FFB000;
     background-color: #0D0D00;
+    text-align: left;
+    padding-left: 12px;
 }
 
 QPushButton:hover {
@@ -52,6 +54,10 @@ QTableView::item:hover {
     background-color: #1A1000;
 }
 
+QTableView::item:alternative {
+  background-color: #111100;
+}
+
 /* === HEADER === */
 QHeaderView::section {
     background-color: #050500;
@@ -70,8 +76,8 @@ QScrollBar:vertical {
 }
 
 QScrollBar::handle:vertical {
-    background-color: #7A5500;
-    min-height: 20px;
+    background-color: #FFB000;
+    min-height: 30px;
 }
 
 QScrollBar::handle:vertical:hover {

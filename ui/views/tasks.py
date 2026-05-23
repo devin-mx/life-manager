@@ -23,6 +23,7 @@ class TasksView(QWidget):
             ["Done", "Title", "Description", "Due Date", "🗑️"]
         )
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+        self.table.setAlternatingRowColors(True)
 
         self.table.setColumnWidth(0, 50)
         self.table.setColumnWidth(1, 240)

@@ -10,6 +10,7 @@ from ui.views.tasks import TasksView
 from ui.views.goals import GoalsView
 from ui.views.journal import JournalView
 from ui.views.finances import FinancesView
+from ui.crt_overlay import CRTOverlay
 
 
 class MainWindow(QMainWindow):
@@ -44,6 +45,11 @@ class MainWindow(QMainWindow):
             lambda: self.stack_widget.setCurrentIndex(self.finances_index)
         )
 
+        # CRT Overlay - Keep on the bottom
+
+        self._crt = CRTOverlay(self.centralWidget())
+        self._crt.resize(self.centralWidget().size())
+
     def setup_central_widget(self) -> None:
         central_widget = QWidget()
         self.central_layout = QHBoxLayout()
@@ -64,10 +70,15 @@ class MainWindow(QMainWindow):
 
         button_labels = ["Tasks", "Goals", "Journal", "Finances"]
         for label_name in button_labels:
-            button = QPushButton(f">{label_name}")
+            button = QPushButton(f"█{label_name}")
             self.sidebar_layout.addWidget(button)
             self.buttons_dict[label_name] = button
 
     def create_view_stack(self):
         self.stack_widget = QStackedWidget()
         self.central_layout.addWidget(self.stack_widget)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self._crt.resize(self.centralWidget().size())
+        self._crt.raise_()
