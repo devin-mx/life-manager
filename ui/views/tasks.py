@@ -20,16 +20,16 @@ class TasksView(QWidget):
         self.table = QTableWidget()
         self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels(
-            ["Done", "Title", "Description", "Due Date", "🗑️"]
+            ["Done", "Title", "Description", "Due Date", "X"]
         )
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.table.setAlternatingRowColors(True)
 
-        self.table.setColumnWidth(0, 50)
-        self.table.setColumnWidth(1, 240)
-        self.table.setColumnWidth(2, 550)
+        self.table.setColumnWidth(0, 60)
+        self.table.setColumnWidth(1, 200)
+        self.table.setColumnWidth(2, 500)
         self.table.setColumnWidth(3, 100)
-        self.table.setColumnWidth(4, 140)
+        self.table.setColumnWidth(4, 100)
 
         self.main_layout.addWidget(self.table)
 

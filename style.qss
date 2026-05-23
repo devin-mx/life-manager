@@ -1,8 +1,6 @@
 QWidget {
-    font-family: Consolas, monospace;
-    font-size: 13px;
     background-color: #0D0D00;
-    colorL #FFB000
+    color: #FFB000
 }
 
 QPushButton {
@@ -64,7 +62,6 @@ QHeaderView::section {
     color: #FFB000;
     border: 1px solid #3A2800;
     padding: 4px 8px;
-    font-family: "Courier New", monospace;
     font-weight: bold;
 }
 
@@ -119,7 +116,6 @@ QLineEdit, QTextEdit, QDateTimeEdit {
     color: #FFB000;
     border: 2px solid #3A2800;
     padding: 4px 8px;
-    font-family: "Courier New", monospace;
     selection-background-color: #FFB000;
     selection-color: #0D0D00;
 }

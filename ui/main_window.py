@@ -1,4 +1,6 @@
 from PySide6.QtWidgets import (
+    QGraphicsDropShadowEffect,
+    QLabel,
     QMainWindow,
     QWidget,
     QStackedWidget,
@@ -62,6 +64,20 @@ class MainWindow(QMainWindow):
         self.sidebar_widget.setObjectName("sidebar")
         self.sidebar_layout = QVBoxLayout()
         self.sidebar_widget.setLayout(self.sidebar_layout)
+
+        sidebar_title = QLabel("== CORESYS v0.0 ==")
+        sidebar_title.setStyleSheet(
+            """
+            color: #FFB000;
+            margin-bottom: 10px;
+            font-weight: bold;
+            padding: 10px;
+            background-color: transparent;
+            """
+        )
+        self.apply_amber_glow(sidebar_title, 10)
+        self.sidebar_layout.addWidget(sidebar_title)
+
         self.central_layout.addWidget(self.sidebar_widget)
 
     def create_nav_buttons(self) -> None:
@@ -70,9 +86,13 @@ class MainWindow(QMainWindow):
 
         button_labels = ["Tasks", "Goals", "Journal", "Finances"]
         for label_name in button_labels:
-            button = QPushButton(f"█{label_name}")
+            button = QPushButton(f"█ {label_name}")
             self.sidebar_layout.addWidget(button)
             self.buttons_dict[label_name] = button
+
+            self.apply_amber_glow(button, 15)
+
+        self.sidebar_layout.addStretch(1)
 
     def create_view_stack(self):
         self.stack_widget = QStackedWidget()
@@ -82,3 +102,11 @@ class MainWindow(QMainWindow):
         super().resizeEvent(event)
         self._crt.resize(self.centralWidget().size())
         self._crt.raise_()
+
+    def apply_amber_glow(self, widget: QWidget, radius=12) -> None:
+
+        glow = QGraphicsDropShadowEffect(widget)
+        glow.setOffset(0, 0)
+        glow.setColor("#FFB000")
+        glow.setBlurRadius(radius)
+        widget.setGraphicsEffect(glow)
